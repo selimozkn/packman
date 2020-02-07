@@ -24,8 +24,10 @@ var grille = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 
+var Magrille = document.querySelector("#grille");
+
 function initGrille() {
-    var Magrille = document.querySelector("#grille");
+
     let i = 1;
     let y = 1;
     Magrille.innerHTML = "";
@@ -35,10 +37,10 @@ function initGrille() {
     for (let y = 0; y < grille.length; y++) {
         /* console.log(grille[y]) */
         for (let x = 0; x < grille[y].length; x++) {
-            console.log(grille[y][x])
+
             var monElement = document.createElement('div')
                 /* monElement.classList.add("mur") */
-            Magrille.appendChild(monElement);
+
             if (grille[y][x] == 0) {
                 monElement.classList.add("mur")
             } else if (grille[y][x] == 1) {
@@ -46,39 +48,94 @@ function initGrille() {
             } else if (grille[y][x] == 2) {
                 monElement.classList.add("sol")
             }
+            monElement.style.gridColumn = (+x) + 1
+            monElement.style.gridRow = (+y) + 1
+            Magrille.appendChild(monElement);
         }
     }
 }
-initGrille()
 
-/* function initGrille() {
 
-    function viderGrille() {
-        grille.innerHTML = " ";
-    }
-    
-    while (i < espaceGrille.length) {
-        while (y < espaceGrille[i].length + 1) {
-            if (espaceGrille[i][y] == 0) {
-                let sol = document.createElement('div');
-                sol.classList.add("sol");
-                grille.appendChild(sol);
-            }
-            if (espaceGrille[i][y] == 1) {
-                let sol = document.createElement('div');
-                sol.classList.add("mur");
-                grille.appendChild(sol);
-            }
-            if (espaceGrille[i][y] == 2) {
-                let sol = document.createElement('div');
-                sol.classList.add("bonbon");
-                grille.appendChild(sol);
-            }
-            console.log(y);
-            y++;
-        }
-        console.log(i);
-        i++;
-    }
+var pacman = {
+    x: 5,
+    y: 2,
+    direction: 0
 }
-initGrille(); */
+
+
+function bougePacman() {
+    document.querySelector('body').addEventListener('keydown', function() {
+
+        var touche = window.event ? event.keyCode : event.which;
+        if (touche == 38) {
+            pacman.direction = 1;
+        }
+        if (touche == 40) {
+            pacman.direction = 2;
+        }
+        if (touche == 39) {
+            pacman.direction = 3;
+
+        }
+        if (touche == 37) {
+            pacman.direction = 4;
+        }
+    });
+    if (pacman.direction == 1) {
+        pacman.y--;
+
+    }
+    if (pacman.direction == 2) {
+        pacman.y++;
+
+    }
+    if (pacman.direction == 3) {
+        pacman.x++;
+
+    }
+    if (pacman.direction == 4) {
+        pacman.x--;
+
+    }
+
+    if (grille[pacman.y - 1][pacman.x - 1] == 0 && pacman.direction == 3) {
+        pacman.x--
+
+    }
+    if (grille[pacman.y - 1][pacman.x - 1] == 0 && pacman.direction == 4) {
+        pacman.x++
+
+    }
+    if (grille[pacman.y - 1][pacman.x - 1] == 0 && pacman.direction == 1) {
+        pacman.y++
+
+    }
+    if (grille[pacman.y - 1][pacman.x - 1] == 0 && pacman.direction == 2) {
+        pacman.y--
+
+    }
+
+    if (grille[pacman.y - 1][pacman.x - 1] == 1) {
+        grille[pacman.y - 1][pacman.x - 1] = 2
+
+    }
+
+    var PacManman = document.createElement('div')
+    PacManman.style.gridRow = pacman.y;
+    PacManman.style.gridColumn = pacman.x;
+    PacManman.classList.add('pacman')
+    Magrille.appendChild(PacManman)
+
+
+}
+
+
+
+function rafraichir() {
+    // console.log('rafraichir')
+    initGrille();
+    bougePacman();
+    setTimeout(rafraichir, 200)
+
+}
+rafraichir()
