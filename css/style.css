@@ -11,3 +11,19 @@ body>section {
     justify-content: center;
     align-items: center;
 }
+
+#grille {
+    display: grid;
+}
+
+.mur {
+    background-color: blue;
+}
+
+.bonbon {
+    background-image: url(../img/bonbon.gif);
+}
+
+.sol {
+    background-color: black;
+}
