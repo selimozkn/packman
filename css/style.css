@@ -10,19 +10,28 @@ article {
     flex-direction: column;
 }
 
+#grille {
+    display: grid;
+    width: 500px;
+    height: 600px;
+}
+
 .mur {
     background-color: blue;
 }
 
 .bonbon {
     background-image: url(../img/bonbon.gif);
+    background-size: cover;
 }
 
 .sol {
     background-color: black;
+    background-size: cover;
 }
 
 .pacman {
+    background-size: cover;
     background-image: url(../img/pacman4.gif);
     z-index: 1;
 }
@@ -30,19 +39,23 @@ article {
 .fantome0 {
     background-image: url(../img/fantome0.gif);
     z-index: 1;
+    background-size: cover;
 }
 
 .fantome1 {
     background-image: url(../img/fantome1.gif);
     z-index: 1;
+    background-size: cover;
 }
 
 .fantome2 {
     background-image: url(../img/fantome2.gif);
     z-index: 1;
+    background-size: cover;
 }
 
 .fantome3 {
     background-image: url(../img/fantome3.gif);
     z-index: 1;
+    background-size: cover;
 }
