@@ -3,12 +3,39 @@ function reinitial() {
     pacman = {
         x: 5,
         y: 2,
-        direction: 0
+        direction: 0,
+        classe: 'pacman'
     }
     if (vie < 1) {
         grille = new grilleDef();
         score = 0
         vie = 3
+        fant = 3
+    }
+}
+
+function ajouter() {
+    fant++
+    tabfantome.push(new fantome())
+}
+
+function rejouer() {
+    pacman = {
+        x: 5,
+        y: 2,
+        direction: 0,
+        classe: 'pacman'
+    }
+    grille = new grilleDef();
+    score = 0
+    vie = 3
+
+}
+
+function accel() {
+    dificult -= 50
+    if (dificult < 200) {
+        dificult = 200
     }
 }
 /* Bouge pac man */
@@ -55,7 +82,24 @@ function bougePacman() {
     if (grille[pacman.y - 1][pacman.x - 1] == 0 && pacman.direction == 2) {
         pacman.y--
     }
-    for (numeroDefantome = 0; numeroDefantome < 3; numeroDefantome++) {
+    if (pacman.direction == 3 && pacman.y == 11 && pacman.x == 20) {
+        pacman = {
+            x: 1,
+            y: 11,
+            direction: 3,
+            classe: 'pacman'
+        }
+    }
+    if (pacman.direction == 4 && pacman.y == 11 && pacman.x == 0) {
+        pacman = {
+            x: 19,
+            y: 11,
+            direction: 4,
+            classe: 'pacman'
+        }
+    }
+
+    for (numeroDefantome = 0; numeroDefantome < 4; numeroDefantome++) {
         if (tabfantome[numeroDefantome].x == pacman.x && tabfantome[numeroDefantome].y == pacman.y) {
             reinitial()
         }
@@ -66,10 +110,14 @@ function bougePacman() {
         score++
         affichage.textContent = "Votre score : " + score
     }
+    if (grille[pacman.y - 1][pacman.x - 1] == 4) {
+        grille[pacman.y - 1][pacman.x - 1] = 2
+        pacman.classe = 'pacman2'
+    }
     var PacManman = document.createElement('div')
     PacManman.style.gridRow = pacman.y;
     PacManman.style.gridColumn = pacman.x;
-    PacManman.classList.add('pacman')
+    PacManman.classList.add(pacman.classe)
     Magrille.appendChild(PacManman)
 }
 
@@ -83,17 +131,29 @@ function rafraichir() {
     // console.log('rafraichir')
     initGrille();
     bougePacman();
-    setTimeout(rafraichir, 300)
 
-    for (let i = 0; i < 5; i++) {
+
+    for (let i = 0; i < fant; i++) {
         bougeFantome(i)
         colisionAvecFantome(i)
     }
+    setTimeout(rafraichir, dificult)
 
 }
+
 window.addEventListener("load", function() {
-    for (let i = 0; i < 3; i++) {
-        tabfantome.push(new fantome())
-    }
+
     rafraichir();
+    document.querySelector('#rejouer').addEventListener('click', function() {
+        rejouer()
+        dificult = 400
+        fant = 3
+    })
+    document.querySelector('#ajouter').addEventListener('click', function() {
+        ajouter()
+    })
+    document.querySelector('#accel').addEventListener('click', function() {
+        accel()
+    })
+
 });

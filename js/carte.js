@@ -14,7 +14,7 @@ class grilleDef {
             [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0],
             [0, 2, 2, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 2, 2, 0],
             [0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0],
-            [1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 0, 1, 4, 1, 0, 1, 1, 1, 1, 1, 1, 1],
             [0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0],
             [0, 2, 2, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 2, 2, 0],
             [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
@@ -28,7 +28,6 @@ class grilleDef {
             [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
         ];
         return grilleDef;
-
     }
 }
 class fantome {
@@ -38,7 +37,7 @@ class fantome {
         this.direction = 0;
     }
 }
-
+var dificult = 400
 var grille = new grilleDef();
 var Magrille = document.querySelector("#grille");
 window.innerWidth
@@ -47,14 +46,16 @@ console.log(window.innerHeight + '  ' + window.innerWidth)
 var pacman = {
     x: 5,
     y: 2,
-    direction: 0
+    direction: 0,
+    classe: 'pacman'
 }
 var score = 0
 var affichage = document.querySelector('h1')
 var affichage2 = document.querySelector('h2')
 var vie = 3
+var fant = 4
 var tabfantome = new Array();
-for (let i = 0; i < 3; i++) {
+for (let i = 0; i < fant; i++) {
     tabfantome.push(new fantome())
 }
 
@@ -80,6 +81,8 @@ function initGrille() {
                 monElement.classList.add("bonbon")
             } else if (grille[y][x] == 2) {
                 monElement.classList.add("sol")
+            } else if (grille[y][x] == 4) {
+                monElement.classList.add("super")
             }
             monElement.style.gridColumn = (+x) + 1
             monElement.style.gridRow = (+y) + 1

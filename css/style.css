@@ -3,16 +3,31 @@ body>section {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    font-family: 'Orbitron', sans-serif;
+    color: yellowgreen;
 }
 
 article {
     display: flex;
     flex-direction: column;
+    background-color: brown;
+    height: 600px;
+    width: 20%;
+    align-items: center;
+}
+
+button {
+    background-color: rgb(109, 35, 35);
+    color: yellowgreen;
+    margin-bottom: 10px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 #grille {
     display: grid;
-    width: 500px;
+    width: 40%;
     height: 600px;
 }
 
@@ -58,4 +73,18 @@ article {
     background-image: url(../img/fantome3.gif);
     z-index: 1;
     background-size: cover;
+}
+
+.super {
+    background-image: url(../img/2000px-Cannabis_leaf.svg.png);
+    z-index: 1;
+    background-size: cover;
+    background-color: black;
+}
+
+.pacman2 {
+    background-image: url(../img/6640107_preview.png);
+    z-index: 1;
+    background-size: cover;
+    background-color: black;
 }
