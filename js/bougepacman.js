@@ -91,7 +91,6 @@ function rafraichir() {
     }
 
 }
-
 window.addEventListener("load", function() {
     for (let i = 0; i < 3; i++) {
         tabfantome.push(new fantome())

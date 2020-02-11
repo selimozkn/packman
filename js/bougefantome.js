@@ -5,7 +5,6 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-
 function bougeFantome(numeroDefantome) {
     tabfantome[numeroDefantome].direction = getRandomIntInclusive(1, 4)
         //console.log('numeroDefantome = ' + numeroDefantome + ' direction = ' + tabfantome[numeroDefantome].direction + 'tabFantome.x =' + tabfantome[numeroDefantome].x + 'tabfantome[numeroDefantome].y =' + tabfantome[numeroDefantome].y)
@@ -18,7 +17,6 @@ function bougeFantome(numeroDefantome) {
     if (tabfantome[numeroDefantome].direction == 3) {
         tabfantome[numeroDefantome].x++;
     }
-
     if (tabfantome[numeroDefantome].direction == 4) {
         tabfantome[numeroDefantome].x--;
     }
