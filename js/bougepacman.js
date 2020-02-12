@@ -1,11 +1,6 @@
 function reinitial() {
     vie--
-    pacman = {
-        x: 5,
-        y: 2,
-        direction: 0,
-        classe: 'pacman'
-    }
+    pacman = new pacpac()
     if (vie < 1) {
         grille = new grilleDef();
         score = 0
@@ -15,17 +10,12 @@ function reinitial() {
 }
 
 function ajouter() {
-    fant++
+    fant--
     tabfantome.push(new fantome())
 }
 
 function rejouer() {
-    pacman = {
-        x: 5,
-        y: 2,
-        direction: 0,
-        classe: 'pacman'
-    }
+    pacman = new pacpac()
     grille = new grilleDef();
     score = 0
     vie = 3
@@ -83,20 +73,10 @@ function bougePacman() {
         pacman.y--
     }
     if (pacman.direction == 3 && pacman.y == 11 && pacman.x == 20) {
-        pacman = {
-            x: 1,
-            y: 11,
-            direction: 3,
-            classe: 'pacman'
-        }
+        pacman = new pacpac()
     }
     if (pacman.direction == 4 && pacman.y == 11 && pacman.x == 0) {
-        pacman = {
-            x: 19,
-            y: 11,
-            direction: 4,
-            classe: 'pacman'
-        }
+        pacman = new pacpac()
     }
 
     for (numeroDefantome = 0; numeroDefantome < 4; numeroDefantome++) {

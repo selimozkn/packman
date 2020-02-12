@@ -43,12 +43,9 @@ var Magrille = document.querySelector("#grille");
 window.innerWidth
 window.innerHeight
 console.log(window.innerHeight + '  ' + window.innerWidth)
-var pacman = {
-    x: 5,
-    y: 2,
-    direction: 0,
-    classe: 'pacman'
-}
+
+
+var pacman = new pacpac()
 var score = 0
 var affichage = document.querySelector('h1')
 var affichage2 = document.querySelector('h2')
