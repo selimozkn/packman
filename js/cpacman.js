@@ -4,72 +4,66 @@ class pacpac {
     direction;
     classe;
     bougePacman() {
+
+
         affichage2.textContent = "Votre vie : " + vie
-        document.querySelector('body').addEventListener('keydown', function() {
-            var touche = window.event ? event.keyCode : event.which;
-            if (touche == 38) {
-                pacman.direction = 1;
-            }
-            if (touche == 40) {
-                pacman.direction = 2;
-            }
-            if (touche == 39) {
-                pacman.direction = 3;
-            }
-            if (touche == 37) {
-                pacman.direction = 4;
-            }
-        });
-        if (pacman.direction == 1) {
-            pacman.y--;
+
+        if (this.direction == 1) {
+            this.y--;
         }
-        if (pacman.direction == 2) {
-            pacman.y++;
+        if (this.direction == 2) {
+            this.y++;
         }
-        if (pacman.direction == 3) {
-            pacman.x++;
+        if (this.direction == 3) {
+            this.x++;
         }
-        if (pacman.direction == 4) {
-            pacman.x--;
+        if (this.direction == 4) {
+            this.x--;
         }
-        if (grille[pacman.y - 1][pacman.x - 1] == 0 && pacman.direction == 3) {
-            pacman.x--
+        if (grille[this.y - 1][this.x - 1] == 0 && this.direction == 3) {
+            this.x--
         }
-        if (grille[pacman.y - 1][pacman.x - 1] == 0 && pacman.direction == 4) {
-            pacman.x++
+        if (grille[this.y - 1][this.x - 1] == 0 && this.direction == 4) {
+            this.x++
         }
-        if (grille[pacman.y - 1][pacman.x - 1] == 0 && pacman.direction == 1) {
-            pacman.y++
+        if (grille[this.y - 1][this.x - 1] == 0 && this.direction == 1) {
+            this.y++
         }
-        if (grille[pacman.y - 1][pacman.x - 1] == 0 && pacman.direction == 2) {
-            pacman.y--
+        if (grille[this.y - 1][this.x - 1] == 0 && this.direction == 2) {
+            this.y--
         }
-        if (pacman.direction == 3 && pacman.y == 11 && pacman.x == 20) {
-            pacman = new pacpac()
+        if (this.direction == 3 && this.y == 11 && this.x == 20) {
+            this.x = 1
+            this.y = 11
+            this.direction = 3
+            this.classe = 'pacman'
         }
-        if (pacman.direction == 4 && pacman.y == 11 && pacman.x == 0) {
-            pacman = new pacpac()
+        if (this.direction == 4 && this.y == 11 && this.x == 0) {
+            this.x = 19
+            this.y = 11
+            this.direction = 4
+            this.classe = 'pacman'
         }
 
-        for (let numeroDefantome = 0; numeroDefantome < 4; numeroDefantome++) {
-            if (tabfantome[numeroDefantome].x == pacman.x && tabfantome[numeroDefantome].y == pacman.y) {
+        for (let numeroDefantome = 0; numeroDefantome < tabfantome.length; numeroDefantome++) {
+            if (this.x == tabfantome[numeroDefantome].x && this.y == tabfantome[numeroDefantome].y) {
                 reinitial()
             }
         }
         affichage.textContent = "Votre score : " + score
-        if (grille[pacman.y - 1][pacman.x - 1] == 1) {
-            grille[pacman.y - 1][pacman.x - 1] = 2
+        if (grille[this.y - 1][this.x - 1] == 1) {
+            grille[this.y - 1][this.x - 1] = 2
             score++
             affichage.textContent = "Votre score : " + score
         }
-        if (grille[pacman.y - 1][pacman.x - 1] == 4) {
-            grille[pacman.y - 1][pacman.x - 1] = 2
-            pacman.classe = 'pacman2'
+        if (grille[this.y - 1][this.x - 1] == 4) {
+            grille[this.y - 1][this.x - 1] = 2
+            this.classe = 'pacman2'
         }
         var PacManman = document.createElement('div')
-        PacManman.style.gridRow = pacman.y;
-        PacManman.style.gridColumn = pacman.x;
-        PacManman.classList.add(pacman.classe)
+        PacManman.style.gridRow = this.y;
+        PacManman.style.gridColumn = this.x;
+        PacManman.classList.add(this.classe)
         Magrille.appendChild(PacManman)
     }
     constructor() {

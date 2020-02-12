@@ -14,7 +14,7 @@ class grilleDef {
             [0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0],
             [0, 2, 2, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 2, 2, 0],
             [0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0],
-            [1, 1, 1, 1, 1, 1, 1, 0, 1, 4, 1, 0, 1, 1, 1, 1, 1, 1, 1],
+            [1, 1, 1, 1, 1, 1, 1, 0, 1, 2, 1, 0, 1, 1, 1, 1, 1, 1, 1],
             [0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0],
             [0, 2, 2, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 2, 2, 0],
             [0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
@@ -30,19 +30,10 @@ class grilleDef {
         return grilleDef;
     }
 }
-class fantome {
-    constructor() {
-        this.x = 10;
-        this.y = 11;
-        this.direction = 0;
-    }
-}
-var dificult = 400
+
+var dificult = 300
 var grille = new grilleDef();
 var Magrille = document.querySelector("#grille");
-window.innerWidth
-window.innerHeight
-console.log(window.innerHeight + '  ' + window.innerWidth)
 
 
 var pacman = new pacpac()
@@ -50,10 +41,10 @@ var score = 0
 var affichage = document.querySelector('h1')
 var affichage2 = document.querySelector('h2')
 var vie = 3
-var fant = 4
+var fant = 3
 var tabfantome = new Array();
 for (let i = 0; i < fant; i++) {
-    tabfantome.push(new fantome())
+    tabfantome.push(new fantome(tabfantome.length))
 }
 
 function initGrille() {
